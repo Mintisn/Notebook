@@ -29,7 +29,9 @@ print("Hello, World!");
 
 ```
 ## tex
-$$加粗mathbf\{x\}= \mathbf{X}\\
+
+$$
+加粗mathbf\{x\}= \mathbf{X}\\
 偏导\backslash partial= \partial \\
 积分 \backslash int=\int\\
 求和 \backslash sum=\sum\\向量 \backslash overrightarrow\{AB\}=\overrightarrow{AB}\\
@@ -37,6 +39,7 @@ $$加粗mathbf\{x\}= \mathbf{X}\\
 $$
 
 ### tex矩阵
+
 $$
  \begin{pmatrix}
  0&1&2\\
@@ -44,6 +47,7 @@ $$
  6&7&8\\
  \end{pmatrix}
 $$
+
 ```
  \begin{pmatrix}
  0&1&2\\
@@ -56,13 +60,16 @@ $$
 $$
  {\textstyle \int f(x)\,dx}
 $$
+
 $$
 \int\!\!\!\int_D f(x,y)dxdy
 $$
+
 ```tex
 $$
  {\textstyle \int f(x)\,dx}
 $$
+
 $$
 \int\!\!\!\int_D f(x,y)dxdy
 $$
@@ -96,7 +103,8 @@ $$
 \backslash Lambda \backslash lambda=\Lambda\lambda\\
 \backslash mu=\mu\\
 \backslash nu=\nu\\
-\backslash Omega\backslash  omega=\Omega\omega $$
+\backslash Omega\backslash  omega=\Omega\omega 
+$$
 
 # 基础语法
 我是普通文字
@@ -105,9 +113,8 @@ $$
 **我是加粗**
 
 > 这是引用
->> 然后二级引用
+>
+> > 然后二级引用
 
 可以看到,高亮语法是不支持的
 ==高亮==
-
-
