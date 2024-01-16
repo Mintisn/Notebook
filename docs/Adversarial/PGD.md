@@ -13,7 +13,6 @@
         });
     </script>
 </head>
-
 # [Reliable Evaluation of Adversarial Robustness with an Ensemble of Diverse Parameter-free Attacks](https://arxiv.org/abs/2003.01690)
 
 ## Abstract

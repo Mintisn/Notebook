@@ -13,13 +13,13 @@
         });
     </script>
 </head>
-# [LLM Self Defense](https://arxiv.org/pdf/2308.07308.pdf)
+# LLM Self Defense
 
 
 
-|                            paper                             |                            author                            | date        |                             url                              |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | ----------- | :----------------------------------------------------------: |
-| LLM Self Defense: By Self Examination, LLMs Know They Are Being Tricked | [Mansi Phute](https://arxiv.org/search/cs?searchtype=author&query=Phute,+M), [Alec Helbling](https://arxiv.org/search/cs?searchtype=author&query=Helbling,+A), [Matthew Hull](https://arxiv.org/search/cs?searchtype=author&query=Hull,+M), [ShengYun Peng](https://arxiv.org/search/cs?searchtype=author&query=Peng,+S), [Sebastian Szyller](https://arxiv.org/search/cs?searchtype=author&query=Szyller,+S), [Cory Cornelius](https://arxiv.org/search/cs?searchtype=author&query=Cornelius,+C), [Duen Horng Chau](https://arxiv.org/search/cs?searchtype=author&query=Chau,+D+H) | 24 Oct 2023 | [2308.07308.pdf (arxiv.org)](https://arxiv.org/pdf/2308.07308.pdf) |
+|                            paper                             |                             url                              |                            author                            | date        |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | ----------- |
+| LLM Self Defense: By Self Examination, LLMs Know They Are Being Tricked | [2308.07308.pdf (arxiv.org)](https://arxiv.org/pdf/2308.07308.pdf) | [Mansi Phute](https://arxiv.org/search/cs?searchtype=author&query=Phute,+M), [Alec Helbling](https://arxiv.org/search/cs?searchtype=author&query=Helbling,+A), [Matthew Hull](https://arxiv.org/search/cs?searchtype=author&query=Hull,+M), [ShengYun Peng](https://arxiv.org/search/cs?searchtype=author&query=Peng,+S), [Sebastian Szyller](https://arxiv.org/search/cs?searchtype=author&query=Szyller,+S), [Cory Cornelius](https://arxiv.org/search/cs?searchtype=author&query=Cornelius,+C), [Duen Horng Chau](https://arxiv.org/search/cs?searchtype=author&query=Chau,+D+H) | 24 Oct 2023 |
 
 
 
@@ -66,7 +66,10 @@ detecting harm as a **suffix** perform better
 
 
 $$
-LLM_{gen}(T_{in})=T_{resp}\\
+LLM_{gen}(T_{in})=T_{resp}
+$$
+
+$$
 LLM_{filter}(T_{resp})=\{harmful,harmless\}
 $$
 
@@ -89,6 +92,7 @@ $$
 **impact**
 
 + 强调了LLM的竞争力在于过程简单, 而且有不错的泛用性
++ 这个方法可能广泛地应用于针对LLM的攻击
 
 **future work**
 
@@ -103,3 +107,22 @@ $$
 
 [Advbench](https://github.com/thunlp/Advbench)是一个用于评估和比较大型语言模型（LLM）的安全性和鲁棒性的数据集。它包含了一些恶意的提示和后缀，可以诱导LLM生成有害或不良的文本，比如制造炸弹、散布谣言、煽动暴力等。AdvBench数据集的目的是为了提高对LLM攻击的认识和防范，以及促进LLM防御方法的发展和创新。AdvBench数据集由Zou等人在2023年的论文[3](https://ml.cs.tsinghua.edu.cn/adv-bench/)中提出，并在GitHub上公开分享
 
+## summary
+
++ LLM self defense 不需要对模型做出太多调整, 简单且足够高效
++ 自己在使用gpt时, 可以适当考虑把文本放在前面,将对应的问题放在后面进行提问, 可能得到更加准确的回答
+
+
+
+
+
+实际上,我感觉目前的LLM基本都具备一定的防御能力,但是还存在其他方面的缺陷.
+
+例如, newbing具备联网功能, 如果向其提问keyword.net(这是一个随意编造的网站)的相关内容, bing可能真的去搜索keyword,查找相关网站,甚至给出其他类似网站提供参考, 这其实相当于变向地传播了这些有害的网站
+![10959b544e7de4e48c44c3ac10532223](https://cdn.jsdelivr.net/gh/Mintisn/Images@main/githubPictures/10959b544e7de4e48c44c3ac10532223.jpg)
+
+而在理想情况下, 也许bing应该在获取问题后首先发现问题本身的危害性,直接避免搜索和回答,或者在搜索后发现危害性,同时屏蔽这些网站,而不是直接给出网站的网址.
+
+事实上,bing应该确实存在这样的机制来实现规避有害prompt, 比如它会在正面回答了某些问题并发现自身回答的危害性后迅速撤回回答
+
+但在这个实例中,newbing没有发现自身回答的危害性(其回答文本确实不具备危害性,但是给出的链接具备危害性)

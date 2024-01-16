@@ -86,7 +86,7 @@ $$
 y_{LL}=\arg\min_{y}\{p(y|X)\}
 $$
 
-为了最大化 $\log p(y_{LL}\vert X)$ ,我们在 $sign{\nabla_{X} \log(p(y_{LL}\vert X))}$ (对于交叉熵损失的神经网络,其等于 $sign{-\nabla_{X}J(x,y_{LL})}$)方向上进行迭代. 故有以下过程
+为了最大化 $\log p(y_{LL}\vert X)$ ,我们在 $sign{\nabla_{X} \log(p(y_{LL}\vert X))}$ (对于交叉熵损失的神经网络,其等于 $sign{-\nabla_{X}J(x,y_{LL})}$)方向上进行迭代. 故有以下过程we
 
 $$
 X^{adv}_0 =X\\
@@ -94,7 +94,6 @@ X^{adv}_{N+1}=Clip_{X,\epsilon}\{X^{adv}_{N}-\alpha sign(\nabla_x J(X^{adv}_{N},
 $$
 
 ## PGD
-
 $$
 X^{adv}_0 =X\\
 X^{adv}_{N+1}=\prod_{X+S}\{X^{adv}_{N}+\alpha sign(\nabla_x J(X^{adv}_{N},y_{true}))\}
@@ -119,7 +118,7 @@ $$
    - 选择相对重要性最高的特征，即 $i^* = \arg \max_i S_i$。
 
 **投影操作**：在每个迭代步骤之后，对对抗样本 $x_{\text{adv}}$ 进行投影，以确保其在合理范围内：
-$$ 
+$$
 x_{\text{adv}} = \text{clip}(x_{\text{adv}}, x - \epsilon, x + \epsilon)
 $$
 
@@ -127,11 +126,12 @@ $$
 选择相对重要性最高的特征是为了最大化对抗样本的影响，从而降低模型的准确性。通过迭代的方式，在每个步骤中选择和扰动特征，JSMA算法可以逐渐改变对抗样本，以在尽可能小的扰动下实现误分类。
 
 ## CW(Carlini and Wagner Attack)(TODO)
+
 [Towards Evaluating the Robustness of Neural Networks](https://nicholas.carlini.com/papers/2017_sp_nnrobustattacks.pdf)
 
 CW算法的目标是在给定输入样本 $x$ 和目标标签 $t$ 的情况下，找到一个扰动 $\delta$，使得模型输出 $f(x + \delta)$ 与目标标签 $t$ 之间的损失最小化。CW算法最小化的损失函数如下：
 
-$$ 
+$$
    J(\delta) = \text{dist} + c \cdot \text{loss}(f(x + \delta), t) 
 $$
 
@@ -141,7 +141,6 @@ $$
 
 ## MIM(Momentum Iterative Method)
 [Boosting Adversarial Attacks with Momentum](https://arxiv.org/pdf/1710.06081.pdf)
-
 $$
 g_{t+1}=\mu*g_{t}+\frac{\nabla_x J(X,y_{true})}{\|\nabla_x J(X,y_{true})\|}\\
 x^{adv}_{t+1}=x^{adv}_{t}+\alpha*sign(g_{t+1})
