@@ -27,13 +27,17 @@ $$H=-\sum_{i=1}^Np(x_i)logp(x_i)$$
 
 
 
- ## 使用KL散度测量丢失的信息
+## 使用KL散度测量丢失的信息
 
-
+Kullback-Leibler散度只是对我们的熵公式的略微修改。不仅仅是有我们的概率分布p，还有上近似分布q。然后，我们查看每个log值的差异：
 
 $$D_{KL}(p||q)=\sum_{i=1}^{N}p(x_i)(logp(x_i)-logq(x_i))$$
+
+
 
 ## 参考文献
 
 [^1]:  [Kullback-Leibler(KL)散度介绍 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/100676922)
+[^2]: [交叉熵和KL散度有什么区别？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/292434104)
 
+[]
